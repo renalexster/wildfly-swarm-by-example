@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Client {
@@ -14,6 +15,7 @@ public class Client {
 	private Long id;
 	
 	@Column
+	@Size(max=10)
 	private String nome;
 
 	public Long getId() {

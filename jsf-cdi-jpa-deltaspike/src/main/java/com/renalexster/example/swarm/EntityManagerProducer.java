@@ -1,6 +1,7 @@
 package com.renalexster.example.swarm;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
@@ -12,20 +13,21 @@ import javax.persistence.PersistenceUnit;
 public class EntityManagerProducer
 {
     @PersistenceUnit
-    private EntityManagerFactory emf;
+    private EntityManagerFactory entityManagerFactory;
 
-    @Produces // you can also make this @RequestScoped
+    @Produces
     @Default
+    @RequestScoped
     public EntityManager create()
     {
-        return emf.createEntityManager();
+        return this.entityManagerFactory.createEntityManager();
     }
 
-    public void close(@Disposes EntityManager em)
+    public void dispose(@Disposes @Default EntityManager entityManager)
     {
-        if (em.isOpen())
+        if (entityManager.isOpen())
         {
-            em.close();
+            entityManager.close();
         }
     }
 }

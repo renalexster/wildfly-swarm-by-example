@@ -16,11 +16,11 @@ public class ClientService {
 	
 	Logger logger = Logger.getLogger(this.getClass());
 	
-	@Transactional
+	@Transactional(rollbackOn={Exception.class})
 	public void persist(Client c) throws Exception {
 		logger.info("Persisting client ["+c+"]");
-		if (c.getNome().equals("Teste")) throw new Exception("Nome nao permitido");
 		repo.save(c);
+		if (c.getNome().equals("Teste")) throw new Exception("Nome nao permitido");
 		logger.info("saved ["+c+"]");
 	}
 	
