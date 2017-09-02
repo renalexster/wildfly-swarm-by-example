@@ -1,6 +1,7 @@
 package com.renalexster.example.swarm.view;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -42,7 +43,7 @@ public class HomeView {
 	}
 	
 	public List<Client> getListClient(){
-		return repo.findAll();
+		return repo.findAllOrderByIdDesc().filter(p -> p.getId().longValue()>10).collect(Collectors.toList());
 	}
 
 	public String getMsg() {

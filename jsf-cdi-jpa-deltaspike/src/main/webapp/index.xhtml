@@ -13,7 +13,7 @@
 		<h:inputText value="#{homeView.novo.nome}" />
 		<p:commandButton action="#{homeView.inserir}" update="form" process="@form"></p:commandButton>
 		<p:dataList value="#{homeView.listClient}" var="c">
-			Client #{c.nome}
+			Client #{c.id} --  #{c.nome}
 		</p:dataList>
 	</h:form>
 </h:body>
