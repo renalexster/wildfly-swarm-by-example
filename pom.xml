@@ -53,5 +53,10 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
+		
 	</dependencies>
+	<modules>
+		<module>jsf-cdi-jpa</module>
+		<module>jsf-cdi-jpa-deltaspike</module>
+	</modules>
 </project>

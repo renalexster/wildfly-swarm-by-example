@@ -31,4 +31,11 @@ public class Client {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", nome=" + nome + "]";
+	}
+	
+	
 }
